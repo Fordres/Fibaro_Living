@@ -1,0 +1,25 @@
+[{
+  "file": "/home/dirk/Documents/First/wxcrafter.hpp",
+  "directory": "/home/dirk/Documents/First",
+  "command": "/usr/bin/g++ -c /home/dirk/Documents/First/wxcrafter.hpp -o /home/dirk/Documents/First/wxcrafter.hpp.o -target x86_64-linux-gnu -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -DNDEBUG -I. -I.  -O2  -Wall  -I/usr/local/lib/wx/include/gtk3-unicode-static-3.0 -I/usr/local/include/wx-3.0 -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -pthread"
+ }, {
+  "file": "/home/dirk/Documents/First/wxcrafter.cpp",
+  "directory": "/home/dirk/Documents/First",
+  "command": "/usr/bin/g++ -c /home/dirk/Documents/First/wxcrafter.cpp -o /home/dirk/Documents/First/wxcrafter.cpp.o -target x86_64-linux-gnu -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -DNDEBUG -I. -I.  -O2  -Wall  -I/usr/local/lib/wx/include/gtk3-unicode-static-3.0 -I/usr/local/include/wx-3.0 -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -pthread"
+ }, {
+  "file": "/home/dirk/Documents/First/MainFrame.hpp",
+  "directory": "/home/dirk/Documents/First",
+  "command": "/usr/bin/g++ -c /home/dirk/Documents/First/MainFrame.hpp -o /home/dirk/Documents/First/MainFrame.hpp.o -target x86_64-linux-gnu -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -DNDEBUG -I. -I.  -O2  -Wall  -I/usr/local/lib/wx/include/gtk3-unicode-static-3.0 -I/usr/local/include/wx-3.0 -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -pthread"
+ }, {
+  "file": "/home/dirk/Documents/First/wxcrafter_bitmaps.cpp",
+  "directory": "/home/dirk/Documents/First",
+  "command": "/usr/bin/g++ -c /home/dirk/Documents/First/wxcrafter_bitmaps.cpp -o /home/dirk/Documents/First/wxcrafter_bitmaps.cpp.o -target x86_64-linux-gnu -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -DNDEBUG -I. -I.  -O2  -Wall  -I/usr/local/lib/wx/include/gtk3-unicode-static-3.0 -I/usr/local/include/wx-3.0 -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -pthread"
+ }, {
+  "file": "/home/dirk/Documents/First/MainFrame.cpp",
+  "directory": "/home/dirk/Documents/First",
+  "command": "/usr/bin/g++ -c /home/dirk/Documents/First/MainFrame.cpp -o /home/dirk/Documents/First/MainFrame.cpp.o -target x86_64-linux-gnu -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -DNDEBUG -I. -I.  -O2  -Wall  -I/usr/local/lib/wx/include/gtk3-unicode-static-3.0 -I/usr/local/include/wx-3.0 -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -pthread"
+ }, {
+  "file": "/home/dirk/Documents/First/main.cpp",
+  "directory": "/home/dirk/Documents/First",
+  "command": "/usr/bin/g++ -c /home/dirk/Documents/First/main.cpp -o /home/dirk/Documents/First/main.cpp.o -target x86_64-linux-gnu -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include -DNDEBUG -I. -I.  -O2  -Wall  -I/usr/local/lib/wx/include/gtk3-unicode-static-3.0 -I/usr/local/include/wx-3.0 -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -pthread"
+ }]
