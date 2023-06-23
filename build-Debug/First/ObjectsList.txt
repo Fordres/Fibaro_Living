@@ -1,0 +1,1 @@
+../build-Debug/First/wxcrafter_bitmaps.cpp.o ../build-Debug/First/wxcrafter.cpp.o ../build-Debug/First/main.cpp.o

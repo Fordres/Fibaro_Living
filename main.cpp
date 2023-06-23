@@ -16,6 +16,9 @@
 #include "wx/log.h"
 #include "wx/tglbtn.h"
 #include "popupscherm.hpp"
+#include <wx/slider.h>
+#include "wx/panel.h"
+#include <wx/time.h>
 
 
 
@@ -50,53 +53,73 @@ enum
 using namespace std;
 
 class MyPopupScreen : public wxPopupWindow
+//class MyPopupScreen : public wxPanel
+
 {
 private:
-	 DECLARE_EVENT_TABLE();	
-public:
-    MyPopupScreen(wxWindow *parent, const wxPoint &plaats, const wxSize &grootte);
-	 void CreateLampControls(wxPoint plaats, wxString titel);
-	 
+	 DECLARE_EVENT_TABLE();
+     
+     wxImage myBitmapPopup1, myBitmapPopup2;  
+    
+public: 
+    int itemPu;
+    // Defeinitie methodes
+	 // Def
+     MyPopupScreen(wxWindow *parent, int item);
+	 void CreateLampControls(int item);
+	 // Schermen voor de popup vensters 
 	 void OnPaint(wxPaintEvent& WXUNUSED(event))
     {
-        wxPaintDC dcPu(this);
-
-        // this call is vital: it adjusts the dc to account for the current
-        // scroll offset
+        wxPaintDC dcPu(this); 
         PrepareDC(dcPu);
-
-        wxBLACK_DASHED_PEN; 
-        dcPu.DrawLine(wxPoint(3, 40), wxPoint(147,40));
+        if (itemPu == 1) {  // Randverlichting
+            myBitmapPopup1 = wxImage("./Popup1.gif",  wxBITMAP_TYPE_GIF);
+            dcPu.DrawBitmap(myBitmapPopup1, 0, 0, true);
+        }
+        else if (itemPu == 2) { // Salon
+            myBitmapPopup2 = wxImage("./Popup2.gif",  wxBITMAP_TYPE_GIF);
+            dcPu.DrawBitmap(myBitmapPopup2, 0, 0, true);
+        }
+        
     }
 };
 
-//MyPopScreen constructor
-MyPopupScreen::MyPopupScreen(wxWindow *parent, const wxPoint &plaats, const wxSize &grootte)
-	//: wxPopupWindow(parent, wxBORDER_MASK )
+//MyPopScreen constructor test
+MyPopupScreen::MyPopupScreen(wxWindow *parent, int item )
 {
-		 SetBackgroundStyle(wxBG_STYLE_SYSTEM );
-		 this->Create(parent, wxBORDER_MASK ); 
-		 this->SetBackgroundColour(*wxWHITE);
-		 this->Position(wxPoint((POINTMAINX + 700),(POINTMAINY+300)), wxSize(0,0));
-		 this->SetSize(150,175); 
-		 cout << "Plaats "<< plaats.x << ", " << plaats.y << "Grootte " << grootte.x << "," << grootte.y << endl; 
-		 CreateLampControls(wxPoint(5,0), wxT("Randverlichting"));
+         SetBackgroundStyle(wxBG_STYLE_SYSTEM );
+		 //this->Create(parent, wxTRANSPARENT_WINDOW |wxBORDER_NONE); 
+		   //this->SetBackgroundColour(*wxBLUE);
+         // this->SetForegroundColour(*wxBLUE);
+         //this->SetForegroundColour(wxTransparentColour);
+         this->Create(parent, wxTRANSPARENT_WINDOW |wxBORDER_NONE); 
+         this->SetBackgroundColour(wxTransparentColour); 
+			
+         if (item == 1) //Randverlichting
+         {
+             itemPu = item; 
+             this->Position(wxPoint((POINTMAINX + 700),(POINTMAINY+300)), wxSize(0,0));
+         }
+         else if (item == 2) // Salon
+         {
+             itemPu = item;
+             this->Position(wxPoint((POINTMAINX + 500),(POINTMAINY+200)), wxSize(0,0));
+         }
+		 this->SetSize(175,250); 
+		 CreateLampControls(item);
 		 
 }
 
-
 //Method to create buttons on MyPopupSccreen
-void MyPopupScreen::CreateLampControls(wxPoint plaats, wxString titel)
+void MyPopupScreen::CreateLampControls(int item)
 {
-
+    
 	wxImage myBitmapKnopOnBlue = wxImage("./knop_on_off_on.gif",  wxBITMAP_TYPE_GIF);
 	wxImage myBitmapKnopOffBlue = wxImage("./knop_on_off_off.gif",  wxBITMAP_TYPE_GIF);
-	
-	wxStaticText *popupTitel = new wxStaticText(this, wxID_ANY, titel, wxPoint((plaats.x + 20 ), (plaats.y+10)), wxSize(100,25));
-	wxStaticLine *popupLine1 = new wxStaticLine(this, wxID_ANY, wxPoint((plaats.x), (plaats.y + 40)), wxSize(150, 0), wxLI_HORIZONTAL, wxT(" ")); 
-	popupLine1->SetForegroundColour(wxColour(0,253,0));
-	wxButton *lampen = new wxButton(this, 35, wxEmptyString, wxPoint((plaats.x + 20), (plaats.y+50)), wxSize(100,25), wxTRANSPARENT_WINDOW |wxBORDER_NONE);
-	lampen->SetBitmap(myBitmapKnopOnBlue); 
+    
+	wxButton *lampen = new wxButton(this, 35, wxEmptyString, wxPoint(35, 100), wxSize(100,25), wxTRANSPARENT_WINDOW |wxBORDER_NONE);
+	lampen->SetBitmap(myBitmapKnopOnBlue);
+    wxSlider *dimmer = new wxSlider(this, wxID_ANY, 100, 0, 100, wxPoint(10, 200), wxSize(130,10), wxSL_HORIZONTAL,wxDefaultValidator,wxT("test")); 
 	
 }	
 
@@ -104,20 +127,30 @@ void MyPopupScreen::CreateLampControls(wxPoint plaats, wxString titel)
 class MySimpleCanvas : public wxScrolled<wxWindow>
 {
 public:
-	int x1, x2;
+	int x1, x2, y1, y2;
+	bool statusLampTerras, statusLampSalon, statusLampRand = false; 
+	wxLongLong klickTime, oldKlickTime; 
 	wxImage myBitmap2 = wxImage("./Living.gif", wxBITMAP_TYPE_GIF);
 	wxImage myBitmapDoorClosed = wxImage("./Door_Closed.gif",  wxBITMAP_TYPE_GIF);
 	wxImage myBitmapDoorOpen = wxImage("./Door_Open.gif",  wxBITMAP_TYPE_GIF);
+	wxImage myBitmapLampAan = wxImage("./lamp_aan.gif",  wxBITMAP_TYPE_GIF);
+	wxImage myBitmapLampUit = wxImage("./lamp_uit.gif",  wxBITMAP_TYPE_GIF);
 	wxButton *doorLuc = new wxButton(this, 31, wxEmptyString, wxPoint(425,55), wxSize(25,25), wxTRANSPARENT_WINDOW |wxBORDER_NONE);
 	wxButton *doorGarage = new wxButton(this, 32, wxEmptyString, wxPoint(550,55), wxSize(25,25), wxTRANSPARENT_WINDOW |wxBORDER_NONE);
 	wxButton *doorTerras = new wxButton(this, 33, wxEmptyString, wxPoint(245,147), wxSize(25,25), wxTRANSPARENT_WINDOW |wxBORDER_NONE);
-	wxPopupWindow *popup = new MyPopupScreen(this, wxPoint((POINTMAINX + 50),(POINTMAINY + 50)), wxSize(50,150));  
+	wxButton *lampTerras = new wxButton(this, 34, wxEmptyString, wxPoint(310,125), wxSize(50,53), wxTRANSPARENT_WINDOW |wxBORDER_NONE);
+	wxButton *lampSalon = new wxButton(this, 35, wxEmptyString, wxPoint(480,225), wxSize(50,53), wxTRANSPARENT_WINDOW |wxBORDER_NONE);
+	// wxButton *lampRandverlichting = new wxButton(this, 36, wxEmptyString, wxPoint(500,375), wxSize(50,53), wxTRANSPARENT_WINDOW |wxBORDER_NONE);
+    wxPopupWindow *popup1 = new MyPopupScreen(this, 1);  
+    wxPopupWindow *popup2 = new MyPopupScreen(this, 2);
+    
 
     //Constructor - design van het volledige linker en rechter scherm 
     MySimpleCanvas(wxWindow *parent)
         : wxScrolled<wxWindow>(parent, wxID_ANY, wxPoint(0,0), wxDefaultSize, wxHSCROLL, wxT("scrolledWindow"))
     {
-        SetScrollRate( 1, 1 );
+        oldKlickTime = wxGetUTCTimeMillis(); 
+		 SetScrollRate( 1, 1 );
         SetVirtualSize( WIDTH, HEIGHT );
 		  SetBackgroundColour( *wxBLUE );
         
@@ -129,7 +162,9 @@ public:
 		  StatusDeur(doorLuc, false); 
 		  StatusDeur(doorGarage, false);
 		  StatusDeur(doorTerras, false); 
-	
+		  StatusLamp(lampTerras, false); 
+		  StatusLamp(lampSalon, false); 
+		  // StatusLamp(lampRandverlichting, true); 
     }
 
 private:
@@ -137,24 +172,49 @@ private:
 	 
 	 void onMouseDown(wxMouseEvent & evt)
 	 {
-		 CaptureMouse();
-		 x1= evt.GetX(); 
-		 std::cout << "muis neer " << x1 << std::endl;  
+		 // CaptureMouse();
+			x1= evt.GetX();
+			y1 = evt.GetY(); 
+			klickTime = wxGetUTCTimeMillis();
+			
+		 if (evt.LeftDClick())
+		 {
+			 cout << " Dubbel klick" << endl;
+		 }
+		 else if (evt.LeftDown() and not evt.LeftDClick())
+		 {
+			 
+			 cout << "Oldklicktime " << oldKlickTime << endl; 
+			 if (klickTime >= (oldKlickTime + 500)) 
+			 {
+				cout << " één klik  met uitvoering " << " klicktime " << klickTime << endl;
+				oldKlickTime = klickTime; 
+			 }
+			 else
+			 {
+				oldKlickTime = klickTime; 
+				cout << "Doe niets" << endl;
+			 } 
+		 }
+		 
+		 
+		 // ReleaseMouse();
 	 }
     
 	 void onMouseUp(wxMouseEvent & evt)
 	 {
-		x2= evt.GetX();  
-		ReleaseMouse();  
-		std::cout << "muis omhoog " << x2 << std::endl;
+		 CaptureMouse(); 
+		 x2= evt.GetX();
+		 y2= evt.GetY();
+		 ReleaseMouse(); 
 		if (x1 > x2) 
-			 {
-				 this->Scroll(0,0); 
-			 }
+			{
+				this->Scroll(0,0); 
+			}
 		if (x1 < x2)
-			 {
-				 this->Scroll(1000,0); 
-			 }
+			{
+				this->Scroll(1000,0); 
+			}
 	 }
 	 
     void VolgendScherm(wxCommandEvent & event)
@@ -162,13 +222,16 @@ private:
         this->Scroll (1000, 0);
 		  //popup->Position(wxPoint(200,200), wxSize(300,200));
 		  //popup->SetBackgroundColour(*wxWHITE);
-		  popup->Show(true); 
+		  popup1->Show(true);
+		  popup2->Show(false); 
 		  
     }
     
     void VorigScherm(wxCommandEvent & event)
     { 
-        this->Scroll (0, 0); 
+        this->Scroll (0, 0);
+        popup1->Show(false);
+        popup2->Show(true); 
     }
     
     void OnPaint(wxPaintEvent& WXUNUSED(event))
@@ -184,7 +247,8 @@ private:
         dc.SetBrush( *wxBLUE_BRUSH );
         dc.DrawRectangle( 0, 0, (WIDTH / 2), (HEIGHT-10));
         dc.DrawRectangle( (WIDTH/2), 0, (WIDTH /2 + 2), (HEIGHT-10));
-		  dc.DrawBitmap(myBitmap2, 0, 20, true);
+        dc.DrawBitmap(myBitmap2, 0, 20, true);
+		  dc.DrawBitmap(myBitmapLampUit, 500, 375, true); 
   
     }
 	 void StatusDeur(wxButton *deur, bool open)
@@ -199,13 +263,68 @@ private:
 		}
 	 }
 	 
+	 
+	 void StatusLamp(wxButton *lamp, bool aan)
+	 {
+		if (aan) 
+		{
+			lamp->SetBitmap(myBitmapLampAan);
+		}
+		else 
+		{
+			lamp->SetBitmap(myBitmapLampUit);
+		}
+	 }
+	 
+	 void ToggleLampTerras(wxCommandEvent & event)
+	 {
+		 if (statusLampTerras) 
+		 {
+			 statusLampTerras = false;
+		 }
+		 else 
+		 {
+			 statusLampTerras = true; 
+		 }
+		 StatusLamp(lampTerras, statusLampTerras);
+	 }
+	 
+	 void ToggleLampSalon(wxCommandEvent & event)
+	 {
+		 if (statusLampSalon) 
+		 {
+			 statusLampSalon = false;
+		 }
+		 else 
+		 {
+			 statusLampSalon = true; 
+		 }
+		 StatusLamp(lampSalon, statusLampSalon);
+	 }
+	 
+	 void ToggleLampRand(wxCommandEvent & event)
+	 {
+		 if (statusLampRand) 
+		 {
+			 statusLampRand = false;
+		 }
+		 else 
+		 {
+			 statusLampRand = true; 
+		 }
+		 // StatusLamp(lampRandverlichting, statusLampRand);
+	 }
+	 
 };
 BEGIN_EVENT_TABLE(MySimpleCanvas, wxScrolled)
 	 EVT_PAINT(MySimpleCanvas::OnPaint)
     EVT_BUTTON(5, MySimpleCanvas::VolgendScherm)
     EVT_BUTTON(10, MySimpleCanvas::VorigScherm)
-	 EVT_LEFT_DOWN(MySimpleCanvas::onMouseDown)
+	 EVT_MOUSE_EVENTS(MySimpleCanvas::onMouseDown)
 	 EVT_LEFT_UP(MySimpleCanvas::onMouseUp)
+	 EVT_BUTTON(34, MySimpleCanvas::ToggleLampTerras)
+	 EVT_BUTTON(35, MySimpleCanvas::ToggleLampSalon)
+	 // EVT_BUTTON(36, MySimpleCanvas::ToggleLampRand)
 END_EVENT_TABLE()
 
 BEGIN_EVENT_TABLE(MyPopupScreen, wxPopupWindow)

@@ -1,1 +1,1 @@
-build-Debug/wxcrafter_bitmaps.cpp.o build-Debug/main.cpp.o build-Debug/wxcrafter.cpp.o
+build-Debug/wxcrafter_bitmaps.cpp.o build-Debug/wxcrafter.cpp.o build-Debug/MainFrame.cpp.o build-Debug/main.cpp.o

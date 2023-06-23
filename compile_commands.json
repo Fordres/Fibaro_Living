@@ -1,25 +1,13 @@
 [{
-  "file": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/main.cpp",
-  "directory": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living",
-  "command": "clang++ -c /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/main.cpp -o /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/main.cpp.o  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -I.  -gdwarf-2  -O0  -Wall"
+  "file": "/Users/dirkallaerts/First/Fibaro_Living/wxcrafter.hpp",
+  "directory": "/Users/dirkallaerts/First/Fibaro_Living",
+  "command": "clang++ -c /Users/dirkallaerts/First/Fibaro_Living/wxcrafter.hpp -o /Users/dirkallaerts/First/Fibaro_Living/wxcrafter.hpp.o  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -DNDEBUG -I.  -O2  -Wall"
  }, {
-  "file": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/wxcrafter.hpp",
-  "directory": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living",
-  "command": "clang++ -c /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/wxcrafter.hpp -o /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/wxcrafter.hpp.o  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -I. -I.  -gdwarf-2  -O0  -Wall  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/lib/wx/include/osx_cocoa-unicode-static-3.2 -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -D_FILE_OFFSET_BITS=64 -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__"
+  "file": "/Users/dirkallaerts/First/Fibaro_Living/main.cpp",
+  "directory": "/Users/dirkallaerts/First/Fibaro_Living",
+  "command": "clang++ -c /Users/dirkallaerts/First/Fibaro_Living/main.cpp -o /Users/dirkallaerts/First/Fibaro_Living/main.cpp.o  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -DNDEBUG -I.  -O2  -Wall"
  }, {
-  "file": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/wxcrafter_bitmaps.cpp",
-  "directory": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living",
-  "command": "clang++ -c /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/wxcrafter_bitmaps.cpp -o /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/wxcrafter_bitmaps.cpp.o  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -I. -I.  -gdwarf-2  -O0  -Wall  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/lib/wx/include/osx_cocoa-unicode-static-3.2 -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -D_FILE_OFFSET_BITS=64 -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__"
- }, {
-  "file": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/main.cpp",
-  "directory": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living",
-  "command": "clang++ -c /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/main.cpp -o /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/main.cpp.o  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -I. -I.  -gdwarf-2  -O0  -Wall  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/lib/wx/include/osx_cocoa-unicode-static-3.2 -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -D_FILE_OFFSET_BITS=64 -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__"
- }, {
-  "file": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/MainFrame.hpp",
-  "directory": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living",
-  "command": "clang++ -c /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/MainFrame.hpp -o /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/MainFrame.hpp.o  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -I. -I.  -gdwarf-2  -O0  -Wall  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/lib/wx/include/osx_cocoa-unicode-static-3.2 -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -D_FILE_OFFSET_BITS=64 -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__"
- }, {
-  "file": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/wxcrafter.cpp",
-  "directory": "/Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living",
-  "command": "clang++ -c /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/wxcrafter.cpp -o /Users/dirkallaerts/Development/Fibaro_CodeLite/Fibaro_Living/wxcrafter.cpp.o  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -I. -I.  -gdwarf-2  -O0  -Wall  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/lib/wx/include/osx_cocoa-unicode-static-3.2 -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -D_FILE_OFFSET_BITS=64 -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__"
+  "file": "/Users/dirkallaerts/First/Fibaro_Living/MainFrame.hpp",
+  "directory": "/Users/dirkallaerts/First/Fibaro_Living",
+  "command": "clang++ -c /Users/dirkallaerts/First/Fibaro_Living/MainFrame.hpp -o /Users/dirkallaerts/First/Fibaro_Living/MainFrame.hpp.o  -I/Users/dirkallaerts/Development/wxWidgets-3.2.2.1/include -DNDEBUG -I.  -O2  -Wall"
  }]
